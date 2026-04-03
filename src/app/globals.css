@@ -47,3 +47,8 @@ a {
     color-scheme: dark;
   }
 }
+
+body {
+    padding-right: 0px !important;
+    overflow-y: scroll !important; 
+}
