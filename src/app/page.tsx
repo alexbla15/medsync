@@ -1,66 +1,46 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import styles from './Home.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartPie, faPlusCircle, faHospitalUser } from '@fortawesome/free-solid-svg-icons';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className={styles.container}>
+      <div className={styles.hero}>
+        <h1>Manage Your Clinic <span>Better.</span></h1>
+        <p className={styles.subtitle}>
+          The next generation medical operating system. Real-time analytics, 
+          seamless scheduling, and patient-first care.
+        </p>
+
+        <div className={styles.navCards}>
+          <Link href="/dashboard" className={styles.card}>
+            <div className={styles.iconBox}>
+              <FontAwesomeIcon icon={faChartPie} />
+            </div>
+            <h3>Clinic Dashboard</h3>
+            <p>Monitor live appointments, staff availability and clinic performance.</p>
+          </Link>
+
+          <Link href="/add-appointment" className={styles.card}>
+            <div className={styles.iconBox}>
+              <FontAwesomeIcon icon={faPlusCircle} />
+            </div>
+            <h3>New Appointment</h3>
+            <p>Schedule a patient session with our smart booking assistant.</p>
+          </Link>
+
+          <div className={styles.card}>
+            <div className={styles.iconBox}>
+              <FontAwesomeIcon icon={faHospitalUser} />
+            </div>
+            <h3>Patient Records</h3>
+            <p>Securely access and manage medical history and documentation.</p>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
     </div>
   );
 }

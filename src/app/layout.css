@@ -1,0 +1,79 @@
+.pageWrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* מבטיח שהעמוד יתפוס לפחות את כל גובה המסך */
+}
+
+.mainContent {
+    flex: 1; /* דוחף את ה-Footer למטה אם התוכן קצר */
+}
+
+/* Navbar Styling */
+.navbar {
+    background: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--primary-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--primary-dark);
+    text-decoration: none;
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    cursor: pointer;
+    padding: 10px;
+}
+
+.navMenu {
+    position: fixed;
+    top: 70px;
+    right: 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 200px;
+    border: 1px solid var(--primary-bg);
+}
+
+.navLink {
+    text-decoration: none;
+    color: var(--primary-dark);
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+.navLink:hover {
+    background: var(--primary-lightest);
+    color: var(--primary-main);
+}
+
+/* Footer Styling */
+.footer {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid var(--primary-bg);
+    color: var(--info-light);
+    font-weight: 600;
+    font-size: 0.85rem;
+}

@@ -1,0 +1,295 @@
+:root {
+    /* Colors */
+    --primary-bg: #f4f7fa;
+    --primary-dark: #1a1f36;
+    --primary-main: #4f46e5;
+    --primary-lightest: hsl(223, 95%, 91%);
+    --info-light: #94a3b8;
+    
+    /* Semantic & Surfaces */
+    --surface-white: #ffffff;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    
+    /* Layout */
+    --border-radius: 30px;
+    --border-radius-sm: 12px;
+    
+    /* Shadows */
+    --shadow-card: 0 10px 25px -5px rgba(26, 31, 54, 0.05);
+    --shadow-table: 0 20px 50px rgba(26, 31, 54, 0.03);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container {
+    min-height: 100vh;
+    background-color: var(--primary-bg);
+    padding: 40px;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--primary-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Header & Search */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 20px;
+}
+
+.title h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    margin: 0;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-main) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title p {
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.searchContainer {
+    position: relative;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--info-light);
+    pointer-events: none;
+}
+
+.searchInput {
+    width: 100%;
+    max-width: fit-content;
+    padding: 12px 16px 12px 45px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--surface-white);
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--primary-main);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.addButton {
+    background-color: var(--primary-main);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: var(--border-radius-sm);
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.addButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(79, 70, 229, 0.25);
+    background-color: #4338ca;
+}
+
+/* Stats Section */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.statCard {
+    background: var(--surface-white);
+    padding: 24px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.statCard:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-lightest);
+}
+
+.iconWrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+
+.statCardTitle {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.statCardValue {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary-dark);
+}
+
+/* Table Section */
+.tableContainer {
+    background: var(--surface-white);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    box-shadow: var(--shadow-table);
+}
+
+.customTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+.customTable th {
+    padding: 20px 25px;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--info-light);
+    letter-spacing: 1.2px;
+}
+
+.tableRow {
+    transition: var(--transition);
+}
+
+.tableRow td {
+    padding: 16px 25px;
+    background: var(--surface-white);
+    border-top: 1px solid var(--primary-bg);
+    border-bottom: 1px solid var(--primary-bg);
+}
+
+.tableRow td:first-child {
+    border-left: 1px solid var(--primary-bg);
+    border-radius: 18px 0 0 18px;
+}
+
+.tableRow td:last-child {
+    border-right: 1px solid var(--primary-bg);
+    border-radius: 0 18px 18px 0;
+}
+
+.tableRow:hover td {
+    background: var(--primary-lightest);
+    border-color: var(--primary-lightest);
+    cursor: pointer;
+}
+
+.nameBadge {
+    font-weight: 700;
+    color: var(--primary-dark);
+    font-size: 0.95rem;
+}
+
+.profession {
+    font-size: 0.8rem;
+    color: var(--primary-main);
+    font-weight: 600;
+}
+
+.departmentTag, .descriptionTag {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.departmentTag { background: #eef2ff; color: var(--primary-main); }
+.descriptionTag { background: #f1f5f9; color: var(--primary-dark); }
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.moreDetails {
+    color: var(--primary-main);
+    padding: 8px;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.moreDetails:hover {
+    background: rgba(79, 70, 229, 0.1);
+}
+
+/* Pagination & Sorting */
+.sortableHeader {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.sortableHeader:hover { color: var(--primary-main); }
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    margin-top: 10px;
+}
+
+.pageButtons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pageBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: white;
+    color: var(--primary-dark);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.pageBtn:hover:not(:disabled) {
+    border-color: var(--primary-main);
+    color: var(--primary-main);
+    background: var(--primary-lightest);
+}
+
+.pageBtn:disabled {
+    opacity: 0.3;
+}
