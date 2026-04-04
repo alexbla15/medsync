@@ -1,0 +1,135 @@
+.navContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 40px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #ffffff; 
+}
+
+.scrolled {
+    padding: 12px 40px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navInner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 900;
+    text-decoration: none;
+    color: var(--primary-dark);
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--primary-main);
+}
+
+.desktopLinks {
+    display: flex;
+    gap: 10px;
+    background: rgba(241, 245, 249, 0.5);
+    padding: 6px;
+    border-radius: 100px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: var(--info-light);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navLink:hover {
+    color: var(--primary-dark);
+}
+
+.active {
+    background: white;
+    color: var(--primary-main) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.navActions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.userProfile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary-dark);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: var(--primary-dark);
+    cursor: pointer;
+}
+
+/* Mobile Menu Animation */
+.mobileMenu {
+    position: absolute;
+    top: 100%;
+    left: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 24px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.menuOpen {
+    transform: translateY(10px);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .desktopLinks {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .userName {
+        display: none;
+    }
+}

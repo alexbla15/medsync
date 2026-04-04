@@ -1,31 +1,19 @@
 :root {
-    /* Colors */
-    --primary-bg: #f4f7fa;
-    --primary-dark: #1a1f36;
-    --primary-main: #4f46e5;
-    --primary-lightest: hsl(223, 95%, 91%);
-    --info-light: #94a3b8;
-    
-    /* Semantic & Surfaces */
-    --surface-white: #ffffff;
-    --text-muted: #64748b;
-    --border-color: #e2e8f0;
-    
     /* Layout */
-    --border-radius: 30px;
-    --border-radius-sm: 12px;
+    --border-radius: var(--border-radius-lg);
+    --border-radius-sm: var(--border-radius-md);
     
     /* Shadows */
-    --shadow-card: 0 10px 25px -5px rgba(26, 31, 54, 0.05);
-    --shadow-table: 0 20px 50px rgba(26, 31, 54, 0.03);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-card: var(--shadow-md);
+    --shadow-table: var(--shadow-lg);
+    --transition: var(--transition-smooth);
 }
 
 .container {
     min-height: 100vh;
     background-color: var(--primary-bg);
+    background-image: radial-gradient(at top left, var(--primary-lightest) 0%, transparent 50%);
     padding: 40px;
-    font-family: 'Inter', system-ui, sans-serif;
     color: var(--primary-dark);
     -webkit-font-smoothing: antialiased;
 }
@@ -79,6 +67,7 @@
     background: var(--surface-white);
     font-size: 0.95rem;
     transition: var(--transition);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
 }
 
 .searchInput:focus {
@@ -105,7 +94,8 @@
 .addButton:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 15px rgba(79, 70, 229, 0.25);
-    background-color: #4338ca;
+    box-shadow: var(--shadow-primary);
+    filter: brightness(1.1);
 }
 
 /* Stats Section */
@@ -136,7 +126,7 @@
 .iconWrapper {
     width: 64px;
     height: 64px;
-    border-radius: 20px;
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,13 +215,17 @@
     padding: 6px 12px;
     border-radius: 8px;
     font-size: 0.7rem;
-    font-weight: 800;
+    font-weight: 900;
     text-transform: uppercase;
 }
 
-.departmentTag { background: #eef2ff; color: var(--primary-main); }
-.descriptionTag { background: #f1f5f9; color: var(--primary-dark); }
+.departmentTag { background-color: var(--primary-main); color: #ffffff; }
+.descriptionTag { background-color: var(--primary-dark);  color: var(--primary-lightest);  }
 
+.departmentTag:hover, .descriptionTag:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.3);
+}
 .location {
     display: flex;
     align-items: center;
