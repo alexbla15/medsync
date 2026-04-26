@@ -13,16 +13,16 @@ export default function MedSuncFooter() {
                 <ul className={styles.footerLinks}>
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/add-appointment">Schedules</a></li>
-                    <li><a href="#">Patient CRM</a></li>
+                    <li><a href="/staff">Staff Directory</a></li>
                 </ul>
             </div>
 
             <div className={styles.footerColumn}>
                 <h4>Company</h4>
                 <ul className={styles.footerLinks}>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Security</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/staff">Staff Directory</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
 

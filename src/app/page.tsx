@@ -32,13 +32,13 @@ export default function HomePage() {
             <p>Schedule a patient session with our smart booking assistant.</p>
           </Link>
 
-          <div className={styles.card}>
+          <Link href="/staff" className={styles.card}>
             <div className={styles.iconBox}>
               <FontAwesomeIcon icon={faHospitalUser} />
             </div>
-            <h3>Patient Records</h3>
-            <p>Securely access and manage medical history and documentation.</p>
-          </div>
+            <h3>Staff Directory</h3>
+            <p>View providers, appointments today, and performance cards.</p>
+          </Link>
         </div>
       </div>
     </div>

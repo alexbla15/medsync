@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes, faChartPie, faPlusCircle, faHome, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes, faChartPie, faPlusCircle, faHome, faUsers, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
@@ -20,7 +20,8 @@ export default function Navbar() {
     const navLinks = [
         { name: "Home", href: "/", icon: faHome },
         { name: "Dashboard", href: "/dashboard", icon: faChartPie },
-        { name: "New Entry", href: "/add-appointment", icon: faPlusCircle },
+        { name: "Staff", href: "/staff", icon: faUsers },
+        { name: "New Appointments", href: "/add-appointment", icon: faPlusCircle },
     ];
 
     return (

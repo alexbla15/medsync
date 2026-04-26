@@ -1,5 +1,6 @@
 'use client';
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import Link from 'next/link';
 import styles from './Dashboard.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -9,7 +10,6 @@ import {
     faChevronLeft, faChevronRight,
     faSearch
 } from '@fortawesome/free-solid-svg-icons';
-import { mockAppointments } from '@/lib/mockAppointments';
 
 interface tableColumn {
     key: string;
@@ -28,17 +28,59 @@ export default function MedSyncDashboard() {
     const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' | null }>({ key: '', direction: null });
     const [currentPage, setCurrentPage] = useState(1);
     const [searchTerm, setSearchTerm] = useState('');
+    const [appointments, setAppointments] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     const rowsPerPage = 10;
 
+    // Fetch appointments from MongoDB API
+    useEffect(() => {
+        const fetchAppointments = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch('/api/appointments');
+                if (!response.ok) throw new Error('Failed to fetch appointments');
+                const data = await response.json();
+                setAppointments(data);
+                setError(null);
+            } catch (err) {
+                console.error('Error fetching appointments:', err);
+                setError('Failed to load appointments');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchAppointments();
+    }, []);
+
+    const stats = useMemo(() => {
+        const today = new Date().toLocaleDateString('en-CA');
+        const staffNames = new Set<string>();
+        const patients = new Set<string>();
+        let todayCount = 0;
+
+        appointments.forEach((item: any) => {
+            if (item.staffName) staffNames.add(item.staffName);
+            if (item.patient) patients.add(item.patient);
+            if (String(item.date) === today) todayCount += 1;
+        });
+
+        return {
+            appointmentsToday: todayCount,
+            activeStaff: staffNames.size,
+            distinctPatients: patients.size,
+        };
+    }, [appointments]);
 
     const filteredData = useMemo(() => {
-        return mockAppointments.filter(item =>
+        return appointments.filter(item =>
             Object.values(item).some(val =>
                 String(val).toLowerCase().includes(searchTerm.toLowerCase())
             )
         );
-    }, [searchTerm]);
+    }, [searchTerm, appointments]);
 
     const sortedData = useMemo(() => {
         let sortableItems = [...filteredData];
@@ -96,63 +138,67 @@ export default function MedSyncDashboard() {
                         className={styles.searchInput}
                     />
                 </div>
-                <button className={styles.addButton}>
-                    <FontAwesomeIcon icon={faPlus} /> New Appointment
-
-
-                </button>
+                <Link href="/add-appointment" className={styles.addButton}>
+                    <FontAwesomeIcon icon={faPlus} /> New Appointments
+                </Link>
 
             </header>
 
             <div className={styles.statsGrid}>
-                <StatCard label="Total Slots" val="48" icon={faCalendarCheck} bg="#eef2ff" color="#4f46e5" />
-                <StatCard label="Active Staff" val="14" icon={faUserMd} bg="#fdf2f8" color="#db2777" />
-                <StatCard label="Patients" val="1.2k" icon={faUsers} bg="#f0fdf4" color="#16a34a" />
+                <StatCard label="Appointments Today" val={String(stats.appointmentsToday)} icon={faCalendarCheck} bg="#eef2ff" color="#4f46e5" />
+                <StatCard label="Active Staff" val={String(stats.activeStaff)} icon={faUserMd} bg="#fdf2f8" color="#db2777" />
+                <StatCard label="Patients" val={String(stats.distinctPatients)} icon={faUsers} bg="#f0fdf4" color="#16a34a" />
             </div>
 
             <div className={styles.tableContainer}>
-                <table className={styles.customTable}>
-                    <thead>
-                        <tr>
-                            {columns.map((col) => (
-                                <th
-                                    key={col.key}
-                                    onClick={() => requestSort(col.key)}
-                                    className={styles.sortableHeader}
-                                >
-                                    {col.label} <FontAwesomeIcon icon={getSortIcon(col.key)} className={styles.sortIcon} />
-                                </th>
-                            ))}
-                            {/* ONE EXTRA SPACE FOR EXTRA DETAILS */}
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {currentTableData.map((row, i) => (
-                            <tr key={i} className={styles.tableRow}>
-                                <td>
-                                    <div className={styles.time}>{row.time}</div>
-                                    <div className={styles.date}>{row.date}</div>
-                                </td>
-                                <td>
-                                    <div className={styles.nameBadge}>{row.staffName}</div>
-                                    <div className={styles.profession}>{row.profession}</div>
-                                </td>
-                                <td><span className={styles.departmentTag}>{row.department}</span></td>
-                                <td><span className={styles.descriptionTag}>{row.subcategory}</span></td>
-                                <td>
-                                    <div className={styles.location}>
-                                        <FontAwesomeIcon icon={faMapMarkerAlt} className={styles.locationIcon} />
-                                        {row.location}
-                                    </div>
-                                </td>
-                                <td style={{ textAlign: 'right' }}>
-                                    <FontAwesomeIcon icon={faEllipsisH} className={styles.moreDetails} />
-                                </td>
+                {loading ? (
+                    <div style={{ padding: '20px', textAlign: 'center' }}>Loading appointments...</div>
+                ) : error ? (
+                    <div style={{ padding: '20px', textAlign: 'center', color: 'red' }}>{error}</div>
+                ) : (
+                    <table className={styles.customTable}>
+                        <thead>
+                            <tr>
+                                {columns.map((col) => (
+                                    <th
+                                        key={col.key}
+                                        onClick={() => requestSort(col.key)}
+                                        className={styles.sortableHeader}
+                                    >
+                                        {col.label} <FontAwesomeIcon icon={getSortIcon(col.key)} className={styles.sortIcon} />
+                                    </th>
+                                ))}
+                                {/* ONE EXTRA SPACE FOR EXTRA DETAILS */}
+                                <th></th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {currentTableData.map((row, i) => (
+                                <tr key={i} className={styles.tableRow}>
+                                    <td>
+                                        <div className={styles.time}>{row.time}</div>
+                                        <div className={styles.date}>{row.date}</div>
+                                    </td>
+                                    <td>
+                                        <div className={styles.nameBadge}>{row.staffName}</div>
+                                        <div className={styles.profession}>{row.profession}</div>
+                                    </td>
+                                    <td><span className={styles.departmentTag}>{row.department}</span></td>
+                                    <td><span className={styles.descriptionTag}>{row.subcategory}</span></td>
+                                    <td>
+                                        <div className={styles.location}>
+                                            <FontAwesomeIcon icon={faMapMarkerAlt} className={styles.locationIcon} />
+                                            {row.location}
+                                        </div>
+                                    </td>
+                                    <td style={{ textAlign: 'right' }}>
+                                        <FontAwesomeIcon icon={faEllipsisH} className={styles.moreDetails} />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
 
                 <div className={styles.pagination}>
                     <div className={styles.rowInfo}>
@@ -186,7 +232,7 @@ export default function MedSyncDashboard() {
 
 function StatCard({ label, val, icon, bg, color }: any) {
     return (
-        <div className={styles.statCard}>
+        <div className="card">
             <div className={styles.iconWrapper} style={{ backgroundColor: bg, color: color }}>
                 <FontAwesomeIcon icon={icon} />
             </div>

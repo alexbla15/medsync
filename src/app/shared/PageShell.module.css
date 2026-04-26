@@ -1,0 +1,331 @@
+.pageWrapper {
+    min-height: calc(100vh - 160px);
+    padding: 40px 32px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.pageTitle {
+    font-size: clamp(2.1rem, 2.4vw, 3rem);
+    font-weight: 900;
+    margin: 0;
+    color: var(--primary-dark);
+}
+
+.pageIntro {
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 720px;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background: var(--surface-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    padding: 28px;
+}
+
+.cardTitle {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+}
+
+.cardMeta {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.formGrid {
+    display: grid;
+    gap: 18px;
+    max-width: 760px;
+}
+
+.field {
+    display: grid;
+    gap: 8px;
+}
+
+.label {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.input,
+.textarea,
+.select {
+    width: 100%;
+  min-width: 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background: var(--surface-white);
+}
+
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.selectWrapper .select {
+  flex: 1;
+}
+
+.clearSelectButton {
+  margin-left: 12px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--surface-white);
+  color: var(--primary-dark);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.clearSelectButton:hover {
+  background: rgba(79, 70, 229, 0.08);
+    resize: vertical;
+}
+
+.submitBtn {
+    width: fit-content;
+    padding: 14px 28px;
+    border-radius: var(--border-radius-sm);
+    border: none;
+    background: var(--primary-main);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.submitBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-primary);
+}
+
+.statusMessage {
+    margin-top: 18px;
+    padding: 16px 20px;
+    border-radius: 18px;
+    background: rgba(79, 70, 229, 0.08);
+    color: var(--primary-dark);
+    border: 1px solid rgba(79, 70, 229, 0.16);
+}
+
+.staffGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.staffCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.staffName {
+    font-size: 1.35rem;
+    font-weight: 900;
+    margin: 0 0 8px;
+}
+
+.staffMetaList {
+    margin: 14px 0 0;
+    padding-left: 18px;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.linkRow {
+    margin-top: 16px;
+}
+
+.linkRow a,
+.smallButton {
+    background-color: var(--primary-main);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: var(--border-radius-sm);
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.linkRow a:hover,
+.smallButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(79, 70, 229, 0.25);
+}
+
+.searchRow {
+    margin-bottom: 24px;
+}
+
+.searchBox {
+    max-width: 420px;
+    position: relative;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.searchInput {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--surface-white);
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.staffCardHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.staffIcon {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    background: rgba(79, 70, 229, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-main);
+    font-size: 1.25rem;
+}
+
+.staffCounters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+.counterChip {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-weight: 700;
+    min-width: 50px;
+}
+
+.counterChip span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.counterPrimary {
+    background: rgba(79, 70, 229, 0.08);
+    color: var(--primary-dark);
+}
+
+.counterAccent {
+    background: rgba(236, 72, 153, 0.08);
+    color: #be185d;
+}
+
+.counterSuccess {
+    background: rgba(22, 163, 74, 0.08);
+    color: #166534;
+}
+
+.highlightCard {
+    border-color: rgba(79, 70, 229, 0.3);
+    box-shadow: 0 20px 40px -20px rgba(79, 70, 229, 0.35);
+}
+
+.busyBadge {
+    display: inline-flex;
+    margin-top: 18px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--primary-main);
+    background: rgba(79, 70, 229, 0.1);
+}
+
+.infoCard {
+    flex-direction: column;
+    align-items: start;
+}
+
+.infoCardHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.infoCardIcon {
+    width: 54px;
+    height: 54px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(79, 70, 229, 0.08);
+    color: var(--primary-main);
+    font-size: 1.2rem;
+}
+
+.infoCardTitle {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.formRow {
+    display: grid;
+    gap: 10px;
+}
+
+@media (max-width: 720px) {
+    .pageWrapper {
+        padding: 24px 18px 60px;
+    }
+}
