@@ -147,6 +147,65 @@
     border-radius: var(--border-radius);
     padding: 10px;
     box-shadow: var(--shadow-table);
+    overflow-x: auto;
+}
+
+@media (max-width: 900px) {
+    .tableContainer {
+        padding: 8px;
+    }
+
+    .customTable {
+        min-width: 700px;
+    }
+
+    .customTable th,
+    .customTable td {
+        padding: 12px 16px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .searchContainer {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 14px;
+    }
+
+    .addButton {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .statsGrid {
+        gap: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        gap: 12px;
+    }
+
+    .title h1 {
+        font-size: 2rem;
+    }
+
+    .searchContainer {
+        max-width: 100%;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .customTable th,
+    .customTable td {
+        padding: 10px 12px;
+    }
 }
 
 .customTable {

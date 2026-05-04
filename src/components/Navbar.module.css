@@ -153,6 +153,15 @@
 }
 
 @media (max-width: 768px) {
+    .navContainer {
+        padding: 12px 16px;
+    }
+
+    .navInner {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
     .desktopLinks {
         display: none;
     }
@@ -161,7 +170,36 @@
         display: block;
     }
 
-    .userName {
+    .navActions {
+        gap: 12px;
+    }
+
+    .userProfile {
         display: none;
+    }
+
+    .mobileMenu {
+        left: 10px;
+        right: 10px;
+    }
+
+    .mobileLink {
+        font-size: 1rem;
+        padding: 14px 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .navContainer {
+        padding: 10px 14px;
+    }
+
+    .hamburger {
+        font-size: 1.6rem;
+    }
+
+    .mobileMenu {
+        top: calc(100% + 6px);
+        padding: 16px;
     }
 }
