@@ -7,7 +7,7 @@ interface ThemeStore {
     setDarkMode: (isDark: boolean) => void;
 }
 
-export const useThemeStore = create<ThemeStore>(
+export const useThemeStore = create<ThemeStore>()(
     persist(
         (set) => ({
             isDarkMode: false,
