@@ -111,9 +111,58 @@
     max-width: 760px;
 }
 
+.formRow {
+    display: grid;
+    gap: 10px;
+}
+
 .field {
     display: grid;
     gap: 8px;
+}
+
+@media (max-width: 768px) {
+    .formGrid {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .selectWrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .selectWrapper .select,
+    .clearSelectButton {
+        width: 100%;
+        margin: 0;
+    }
+
+    .clearSelectButton {
+        margin-top: 10px;
+    }
+
+    .submitBtn,
+    .linkRow a,
+    .smallButton {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .formGrid {
+        gap: 14px;
+    }
+
+    .input,
+    .textarea,
+    .select {
+        padding: 12px 14px;
+    }
+
+    .submitBtn {
+        padding: 14px 18px;
+    }
 }
 
 .label {
@@ -132,6 +181,11 @@
   font-size: 0.95rem;
   color: var(--text-main);
   background: var(--surface-white);
+  box-sizing: border-box;
+}
+
+.textarea {
+    min-height: 140px;
 }
 
 .selectWrapper {

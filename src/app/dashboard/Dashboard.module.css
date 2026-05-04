@@ -206,6 +206,105 @@
     .customTable td {
         padding: 10px 12px;
     }
+
+    .detailsDialog {
+        width: 100%;
+        max-width: 100%;
+        max-height: calc(100vh - 40px);
+        border-radius: 18px;
+    }
+
+    .overlay {
+        align-items: flex-end;
+        padding: 12px;
+    }
+
+    .dialogHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dialogBody {
+        padding: 0 14px 14px;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 500px) {
+    .customTable {
+        border-spacing: 0;
+    }
+
+    .customTable thead {
+        display: none;
+    }
+
+    .customTable,
+    .customTable tbody,
+    .customTable tr,
+    .customTable td {
+        display: block;
+        width: 100%;
+    }
+
+    .tableRow {
+        margin-bottom: 16px;
+        border: 1px solid var(--border-color);
+        border-radius: 18px;
+        overflow: hidden;
+        background: var(--surface-white);
+    }
+
+    .tableRow td {
+        padding: 14px 16px;
+        border: none;
+        background: transparent;
+    }
+
+    .tableRow td:not(:last-child) {
+        border-bottom: 1px solid var(--primary-bg);
+    }
+
+    .tableRow td:first-child {
+        border-radius: 18px 18px 0 0;
+    }
+
+    .tableRow td:last-child {
+        border-radius: 0 0 18px 18px;
+    }
+
+    .tableRow td:before {
+        content: attr(data-label) ": ";
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--info-light);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    .tableRow td:last-child {
+        text-align: left !important;
+    }
+
+    .moreDetails {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .location {
+        gap: 6px;
+    }
+
+    .departmentTag,
+    .descriptionTag {
+        display: inline-block;
+        width: auto;
+    }
 }
 
 .customTable {

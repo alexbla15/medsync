@@ -187,15 +187,15 @@ export default function MedSyncDashboard() {
                                         <div className={styles.nameBadge}>{row.staffName}</div>
                                         <div className={styles.profession}>{row.profession}</div>
                                     </td>
-                                    <td><span className={styles.departmentTag}>{row.department}</span></td>
-                                    <td><span className={styles.descriptionTag}>{row.subcategory}</span></td>
-                                    <td>
+                                    <td data-label="Department"><span className={styles.departmentTag}>{row.department}</span></td>
+                                    <td data-label="Category"><span className={styles.descriptionTag}>{row.subcategory}</span></td>
+                                    <td data-label="Location">
                                         <div className={styles.location}>
                                             <FontAwesomeIcon icon={faMapMarkerAlt} className={styles.locationIcon} />
                                             {row.location}
                                         </div>
                                     </td>
-                                    <td style={{ textAlign: 'right' }}>
+                                    <td data-label="Details" style={{ textAlign: 'right' }}>
                                         <FontAwesomeIcon
                                             icon={faEllipsisH}
                                             className={styles.moreDetails}
