@@ -17,6 +17,38 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* Dark mode styles */
+:global(.dark-mode) .navContainer {
+    background: #1e293b;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark-mode) .scrolled {
+    background: rgba(30, 41, 59, 0.95);
+    border-bottom-color: #334155;
+}
+
+:global(.dark-mode) .logo {
+    color: #f8fafc;
+}
+
+:global(.dark-mode) .desktopLinks {
+    background: rgba(51, 65, 85, 0.5);
+}
+
+:global(.dark-mode) .navLink {
+    color: #cbd5e1;
+}
+
+:global(.dark-mode) .navLink.active {
+    color: #60a5fa;
+    background-color: rgba(96, 165, 250, 0.1);
+}
+
+:global(.dark-mode) .userName {
+    color: #cbd5e1;
+}
+
 .navInner {
     max-width: 1400px;
     margin: 0 auto;

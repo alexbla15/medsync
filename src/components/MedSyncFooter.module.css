@@ -40,6 +40,46 @@
     margin-bottom: 25px;
 }
 
+/* Dark mode styles */
+:global(.dark-mode) .footer {
+    background-color: #0f172a;
+    border-top-color: #334155;
+}
+
+:global(.dark-mode) .brandColumn h3 {
+    color: #f8fafc;
+}
+
+:global(.dark-mode) .brandColumn p {
+    color: #cbd5e1;
+}
+
+:global(.dark-mode) .footerColumn h4 {
+    color: #f8fafc;
+}
+
+:global(.dark-mode) .footerLinks a {
+    color: #cbd5e1;
+}
+
+:global(.dark-mode) .footerLinks a:hover {
+    color: #60a5fa;
+}
+
+:global(.dark-mode) .newsletter p {
+    color: #cbd5e1;
+}
+
+:global(.dark-mode) .subscribeInput {
+    background-color: #334155;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+:global(.dark-mode) .subscribeInput:focus {
+    border-color: #6366f1;
+}
+
 .footerLinks {
     list-style: none;
     padding: 0;

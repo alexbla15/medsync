@@ -13,16 +13,17 @@
     "@emotion/styled": "^11.14.1",
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
-    "@fortawesome/react-fontawesome": "^3.3.0",
+    "@fortawesome/react-fontawesome": "^3.3.1",
     "@mui/icons-material": "^7.3.9",
     "@mui/material": "^7.3.9",
     "@mui/material-nextjs": "^7.3.9",
     "@mui/x-data-grid": "^8.28.2",
     "mongodb": "^7.2.0",
     "mongoose": "^9.3.3",
-    "next": "16.2.2",
+    "next": "^16.2.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@types/node": "^20",

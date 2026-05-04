@@ -154,6 +154,10 @@
     margin: 0 0 8px;
 }
 
+:global(.dark-mode) .staffName {
+    color: #f8fafc;
+}
+
 .staffMetaList {
     margin: 14px 0 0;
     padding-left: 18px;
@@ -256,6 +260,27 @@
     font-size: 0.78rem;
     font-weight: 600;
     color: var(--text-muted);
+}
+
+:global(.dark-mode) .counterChip {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f8fafc;
+}
+
+:global(.dark-mode) .counterChip strong {
+    color: #f8fafc;
+}
+
+:global(.dark-mode) .counterPrimary {
+    background: rgba(99, 102, 241, 0.15);
+}
+
+:global(.dark-mode) .counterAccent {
+    background: rgba(236, 72, 153, 0.15);
+}
+
+:global(.dark-mode) .counterSuccess {
+    background: rgba(22, 163, 74, 0.15);
 }
 
 .counterPrimary {

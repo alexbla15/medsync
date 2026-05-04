@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes, faChartPie, faPlusCircle, faHome, faUsers, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { DarkModeToggle } from "./DarkModeToggle";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
@@ -49,6 +50,7 @@ export default function Navbar() {
 
                 {/* Right Side Actions */}
                 <div className={styles.navActions}>
+                    <DarkModeToggle />
                     <div className={styles.userProfile}>
                         <FontAwesomeIcon icon={faUserCircle} />
                         <span className={styles.userName}>Dr. Admin</span>

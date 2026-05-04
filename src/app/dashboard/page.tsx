@@ -7,7 +7,7 @@ import {
     faCalendarCheck, faUserMd, faUsers,
     faMapMarkerAlt, faEllipsisH, faPlus,
     faSort, faSortUp, faSortDown,
-    faChevronLeft, faChevronRight,
+    faChevronLeft, faChevronRight, faTimes,
     faSearch
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -28,6 +28,9 @@ export default function MedSyncDashboard() {
     const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' | null }>({ key: '', direction: null });
     const [currentPage, setCurrentPage] = useState(1);
     const [searchTerm, setSearchTerm] = useState('');
+    const [selectedAppointment, setSelectedAppointment] = useState<any | null>(null);
+
+    const closeDetails = () => setSelectedAppointment(null);
     const [appointments, setAppointments] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -156,23 +159,24 @@ export default function MedSyncDashboard() {
                 ) : error ? (
                     <div style={{ padding: '20px', textAlign: 'center', color: 'red' }}>{error}</div>
                 ) : (
-                    <table className={styles.customTable}>
-                        <thead>
-                            <tr>
-                                {columns.map((col) => (
-                                    <th
-                                        key={col.key}
-                                        onClick={() => requestSort(col.key)}
-                                        className={styles.sortableHeader}
-                                    >
-                                        {col.label} <FontAwesomeIcon icon={getSortIcon(col.key)} className={styles.sortIcon} />
-                                    </th>
-                                ))}
-                                {/* ONE EXTRA SPACE FOR EXTRA DETAILS */}
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <>
+                        <table className={styles.customTable}>
+                            <thead>
+                                <tr>
+                                    {columns.map((col) => (
+                                        <th
+                                            key={col.key}
+                                            onClick={() => requestSort(col.key)}
+                                            className={styles.sortableHeader}
+                                        >
+                                            {col.label} <FontAwesomeIcon icon={getSortIcon(col.key)} className={styles.sortIcon} />
+                                        </th>
+                                    ))}
+                                    {/* ONE EXTRA SPACE FOR EXTRA DETAILS */}
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
                             {currentTableData.map((row, i) => (
                                 <tr key={i} className={styles.tableRow}>
                                     <td>
@@ -192,12 +196,74 @@ export default function MedSyncDashboard() {
                                         </div>
                                     </td>
                                     <td style={{ textAlign: 'right' }}>
-                                        <FontAwesomeIcon icon={faEllipsisH} className={styles.moreDetails} />
+                                        <FontAwesomeIcon
+                                            icon={faEllipsisH}
+                                            className={styles.moreDetails}
+                                            role="button"
+                                            aria-label="View appointment details"
+                                            onClick={() => setSelectedAppointment(row)}
+                                            style={{ cursor: 'pointer' }}
+                                        />
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                    {selectedAppointment && (
+                        <div className={styles.overlay} onClick={closeDetails}>
+                            <div className={styles.detailsDialog} onClick={(event) => event.stopPropagation()}>
+                                <div className={styles.dialogHeader}>
+                                    <div>
+                                        <h3>Appointment details</h3>
+                                        <p className={styles.dialogSubtitle}>{selectedAppointment.patient || 'Patient details'}</p>
+                                    </div>
+                                    <button
+                                        className={styles.closeButton}
+                                        onClick={closeDetails}
+                                        aria-label="Close details dialog"
+                                    >
+                                        <FontAwesomeIcon icon={faTimes} />
+                                    </button>
+                                </div>
+
+                                <div className={styles.dialogBody}>
+                                    <div className={styles.detailRow}>
+                                        <span>Practitioner</span>
+                                        <strong>{selectedAppointment.staffName || '—'}</strong>
+                                    </div>
+                                    <div className={styles.detailRow}>
+                                        <span>Profession</span>
+                                        <strong>{selectedAppointment.profession || '—'}</strong>
+                                    </div>
+                                    <div className={styles.detailRow}>
+                                        <span>Date</span>
+                                        <strong>{selectedAppointment.date || '—'}</strong>
+                                    </div>
+                                    <div className={styles.detailRow}>
+                                        <span>Time</span>
+                                        <strong>{selectedAppointment.time || '—'}</strong>
+                                    </div>
+                                    <div className={styles.detailRow}>
+                                        <span>Location</span>
+                                        <strong>{selectedAppointment.location || '—'}</strong>
+                                    </div>
+                                    <div className={styles.detailRow}>
+                                        <span>Department</span>
+                                        <strong>{selectedAppointment.department || '—'}</strong>
+                                    </div>
+                                    <div className={styles.detailRow}>
+                                        <span>Category</span>
+                                        <strong>{selectedAppointment.subcategory || '—'}</strong>
+                                    </div>
+                                    <div className={styles.detailFull}>
+                                        <span>Patient</span>
+                                        <p>{selectedAppointment.patient || 'No patient name available'}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                    </>
                 )}
 
                 <div className={styles.pagination}>

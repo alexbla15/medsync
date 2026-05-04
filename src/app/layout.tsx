@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import MedSuncFooter from "@/components/MedSyncFooter";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "MedSync",
@@ -16,13 +17,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="page-wrapper">
-        <Navbar /> 
+        <ThemeProvider>
+          <Navbar /> 
 
-        <main className="main-content">
-          {children}
-        </main>
+          <main className="main-content">
+            {children}
+          </main>
 
-        <MedSuncFooter/>
+          <MedSuncFooter/>
+        </ThemeProvider>
       </body>
     </html>
   );
